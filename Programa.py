@@ -12,17 +12,18 @@ print('Carregando...')
 time.sleep(2)#Pausa simulada para carregamento
 
 def cadEmpresa():
-    print('Cadastro da empresa')
+    print('Cadastro da empresa')#cadastrar a empresa
     cadastro_empresa = []
     cadastro_empresa.append(str(input('Digite o nome: ')))
     cadastro_empresa.append(str(input('Digite o CNPJ: ')))
     cadastro_empresa.append(str(input('Digite o nome do responsavel: ')))
 
 
-def individuo():
-    print('Cadastro da Pessoal')
+def cadIndividuo():
+    print('Cadastro da Pessoal')#cadastrar a pessoa
     cadastro_empresa = []
-    cadastro_empresa.append(str(input('Digite o nome: ')))
+    cadastro_empresa.append(nome)))
+    print(
     cadastro_empresa.append(str(input('Digite o cpf: ')))
     cadastro_empresa.append(str(input('Digite o Idade: ')))
 
@@ -33,7 +34,7 @@ while True:
         cadEmpresa()
         break
     elif tipo == '1':
-        individuo()
+        cadIndividuo()
         break
     else:
         print('Erro: Selecione uma opção válida.')
