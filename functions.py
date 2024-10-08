@@ -32,7 +32,7 @@ def empresa():
     cadEmpresa.append(str(input('Ano de inventario: ')))
 
 def individuo():
-    #cadastro do individuo
+#cadastro do individuo
     print('Agora será necessario informar alguns dados seus')
     cadIndividuo = []
     cadIndividuo.append(str(input('Nome: ')))
@@ -40,7 +40,15 @@ def individuo():
     cadIndividuo.append(str(input('Telefone: ')))
     cadIndividuo.append(str(input('Ano inventario: ')))
 
-    #Cadastro de veiculos
+#Moradia
+    qtMoradores = int(input('Digite a quantidade de moradores: '))
+    consAgua = float(input('Digite o consumo médio de água em m³/mês: '))
+    residuos = float(input('Digite a quantidade de residuos em Kg/dia: '))
+    consEnergia = float(input('Digite o consumo de energia eletrica em reais: '))
+    consGas = float(input('Digite o consumo de gás em reais: '))
+    
+#transporte
+    #Veiculo proprio
     while True:
         print('Você possue algum veiculo automotor? ')
         print('[1] - Sim | [0] - Não')
@@ -67,10 +75,81 @@ def individuo():
             break
         else:
             print('Erro: selecione uma opção valida.')
+    #Transporte publico
+    #ônibusUrbano
+    while True:
+        print('Você faz uso de ônibus urbano? ')
+        print('[1] - Sim | [0] - Não')
+        onibusUrbano = str(input())
+        if onibusUrbano == '1':
+            onibusUrbano_dia = int(input('quantas dias por mês você faz o uso desse meio de transporte? '))
+            onibusUrbano_km = int(input('Quantos km por dia você anda com esse meio de transporte? '))
+            break
+        elif onibusUrbano == '0':
+            break
+        else:
+            print('Erro: Digite uma opção valida.')
+    #ônibusViagem
+    while True:
+        print('Você faz uso de ônibus de viagem? ')
+        print('[1] - Sim | [0] - Não')
+        onibusViagem = str(input())
+        if onibusViagem == '1':
+            onibusViagem_dia = int(input('quantas dias por mês você faz o uso desse meio de transporte? '))
+            onibusViagem_km = int(input('Quantos km por dia você anda com esse meio de transporte? '))
+            break
+        elif onibusViagem == '0':
+            break
+        else:
+            print('Erro: Digite uma opção valida.')
+    #trem
+    while True:
+        print('Você faz uso de Trem? ')
+        print('[1] - Sim | [0] - Não')
+        trem = str(input())
+        if trem == '1':
+            trem_dia = int(input('quantas dias por mês você faz o uso desse meio de transporte? '))
+            trem_km = int(input('Quantos km por dia você anda com esse meio de transporte? '))
+            break
+        elif trem == '0':
+            break
+        else:
+            print('Erro: Digite uma opção valida.')
+    #metro
+    while True:
+        print('Você faz uso de Trem? ')
+        print('[1] - Sim | [0] - Não')
+        metro = str(input())
+        if metro == '1':
+            metro_dia = int(input('quantas dias por mês você faz o uso desse meio de transporte? '))
+            metro_km = int(input('Quantos km por dia você anda com esse meio de transporte? '))
+            break
+        elif metro == '0':
+            break
+        else:
+            print('Erro: Digite uma opção valida.')
     
-    #Tipo de enrgia
-    consEnergia = float(input('Digite a media mensal de consumo de enrgia em Kw/h de sua residência: '))
-
-    print(list_mdVeiculo)
-    print(list_kmVeiculo)
-    print(list_combVeiculo)
+    #viagens
+    while True:
+        print('Você você viaja de avião? ')
+        print('[1] - Sim | [0] - Não')
+        aviao = str(input())
+        if aviao == '1':
+            viagemAviao = int(input('Quantas viagem você consuta fazer por ano?'))
+            while True:
+                print('[1] - Curta (até 700km) \n [2] - Média (2.000km) \n [3] - Longa (mais de 7.000km)')
+                distAviao = str(input())
+                if distAviao == '1':
+                    break
+                elif distAviao == '2':
+                    break
+                elif distAviao == '3':
+                    break
+                else:
+                    print('Erro: digite uma opção valida.' )           
+            break
+        elif aviao == '0':
+            break
+        else:
+            print('Erro: Digite uma opção valida. ')
+    
