@@ -166,15 +166,20 @@ def empresa():
             break        
         else:
             print('Erro: Digite uma opção valida')
-    #teste
+#Calculo combustivel
     etanol = (12 * sum(etanol))
     gasolina = (12 * sum(gasolina))
     diesel = (12 * sum(diesel))
     biodiesel = (12 * sum(biodiesel))
     glp = (12 * sum(glp))
-    print(etanol)
-    print(gasolina)
-    print(diesel)
-    print(biodiesel)
-    print(glp)
+    etanol = ((etanol * 1.58)/1000) #1.58kg CO2/litro
+    gasolina = ((gasolina * 2.24)/1000) #2.24kg CO2/litro
+    diesel = ((diesel * 2.63)/1000) #2.63kg CO2/litro
+    biodiesel = ((biodiesel * 2.46)/1000) #2.46kg CO2/litro
+    glp = ((glp * 2.93)) #2.93 CO2/tonelada
+    print(f'Toneladas: {etanol}')
+    print(f'Toneladas: {gasolina}')
+    print(f'Toneladas: {diesel}')
+    print(f'Toneladas: {biodiesel}')
+    print(f'Toneladas: {glp}')
 
