@@ -14,8 +14,8 @@ def empresa():
             dadosEmpresa['anoInventario'] = (anoInventariado)
             break
         else:
-            print('Erro: Ano selecionado e invalido. \nO Ano tem que ser de 2006 até 2023')
-    print('****** Ramo da empresa ****** \n [1] - Agro \n [2] - Industria \n [3] - Outros')
+            print('Erro: O Ano selecionado e invalido. \nO Ano tem que ser de 2006 até 2023')
+    print('****** Ramo da empresa ****** \n [1] - Agro \n [2] - Industrial \n [3] - Outros')
     rmEmpresa = input('Selecione o ramo da empresa: ')
     while True:
         if rmEmpresa == '1':
@@ -55,7 +55,7 @@ def empresa():
         'ProdEletricidade_GasNat' : 0.4, #kg de co2 por kg produzido
         'ProdEletricidade_Petróleo' : 0.7 #kg de co2 por kg produzido
     }
-#tipos de combustivel
+#Entrada de combustível
 
     etanol = []
     gasolina = []
@@ -69,14 +69,13 @@ def empresa():
     while True:
         if combEstacionaria == '1':
             while True:
-                print(' \n[1] - Etanol \n[2] - Gasolina \n[3] - Diesel \n[4] - BioDiesel \n[5] - glp \n[0] - Sair \n')
-                slComb = input(' \n[1] - Etanol \n[2] - Gasolina \n[3] - Diesel \n[4] - BioDiesel \n[5] - glp \n[0] - Sair \n')
+                print('****** combustíveis ****** \n [1] - Etanol \n [2] - Gasolina \n [3] - Diesel \n [4] - BioDiesel \n [5] - glp \n [0] - Sair \n')
+                slComb = input('Selecione o tipo de combustivel: ')
                 if slComb == '1':
                     etanol.append(float(input('Qual e o consumo médio em litros de Etanol por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
-                        print()
+                        print('Aguarde...')
                     elif slEscolha == '0':
                         combEstacionaria = '0'
                         break
@@ -84,10 +83,9 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '2':
                     gasolina.append(float(input('Qual e o consumo médio em litros de Gasolina por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
-                        print()
+                        print('Aguarde...')
                     elif slEscolha == '0':
                         combEstacionaria = '0'
                         break
@@ -95,10 +93,9 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '3':
                     diesel.append(float(input('Qual e o consumo médio em litros de Diesel por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
-                        print()
+                        print('Aguarde...')
                     elif slEscolha == '0':
                         combEstacionaria = '0'
                         break
@@ -106,8 +103,7 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '4':
                     biodiesel.append(float(input('Qual e o consumo médio em litros de BioDiesel por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
                         print()
                     elif slEscolha == '0':
@@ -117,8 +113,7 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '5':
                     glp.append(float(input('Qual e o consumo médio em litros de GLP (Gás liquefeito de Petrólio) por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
                         print()
                     elif slEscolha == '0':
@@ -130,7 +125,7 @@ def empresa():
                     combEstacionaria = '0'
                     break
                 else:
-                    print('Erro: Digite um tipo de combustivel valido.')
+                    print('Erro: Digite um tipo de combustível valido.')
         elif combEstacionaria == '0':
             break        
         else:
@@ -138,8 +133,7 @@ def empresa():
 
 #combustão movel
     print('Combustão Movel \nCombustão móvel se refere às emissões de gases de efeito estufa provenientes de veículos que queimam combustíveis fósseis como gasolina, diesel, gás natural, etanol e outros.')
-    print('A empresa faz uso de combustível Móvel? \n[1] - Sim | [0] - Não')
-    combMovel = str(input())
+    combMovel = input('A empresa faz uso de combustível Móvel? \n [1] - Sim | [0] - Não \n')
     while True:
         if combMovel == '1':
             while True:
@@ -147,8 +141,7 @@ def empresa():
                 slComb = str(input())
                 if slComb == '1':  
                     etanol.append(float(input('Qual e o consumo médio em litros de Etanol por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
                         print()
                     elif slEscolha == '0':
@@ -158,8 +151,7 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '2':
                     gasolina.append(float(input('Qual e o consumo médio em litros de Gasolina por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
                         print()
                     elif slEscolha == '0':
@@ -169,8 +161,7 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '3':
                     diesel.append(float(input('Qual e o consumo médio em litros de Diesel por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
                         print()
                     elif slEscolha == '0':
@@ -180,8 +171,7 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '4':
                     biodiesel.append(float(input('Qual e o consumo médio em litros de BioDiesel por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
                         print()
                     elif slEscolha == '0':
@@ -191,8 +181,7 @@ def empresa():
                         print('Erro: Digite uma opção valida')
                 elif slComb == '5':
                     glp.append(float(input('Qual e o consumo médio em litros de GLP (Gás liquefeito de Petrólio) por mês? ')))
-                    print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
-                    slEscolha = str(input())
+                    slEscolha = input('Existe mais tipo de combustível para colocar o consumo? \n [1] - Sim | [0] - Não \n'))
                     if slEscolha == '1':
                         print()
                     elif slEscolha == '0':
@@ -216,6 +205,7 @@ def empresa():
     diesel = (((12 * sum(diesel))/1000) * comb['diesel'])
     biodiesel = (((12 * sum(biodiesel))/1000) * comb['biodiesel'])
     glp = (((12 * sum(glp))/1000) * comb['glp']) #não finalizado
+    #teste
     print(f'Toneladas: {etanol}')
     print(f'Toneladas: {gasolina}')
     print(f'Toneladas: {diesel}')
@@ -224,7 +214,7 @@ def empresa():
 
 #emissão industrial
     if rmEmpresa == '2':
-        print('****** menu ****** \n [1] - Produção de Aço \n [2] - Produção de Cimento \n [3] - Produção de Papel \n [4] - Produção de Vidro \n [5] - Produção de Alumínio \n [6] - Produção de Amônia \n [7] - Produção de Etanol \n [8] - Produção de Eletricidade a Carvão \n [9] - Produção de Eletricidade a Gás Natural \n [10] - Produção de Eletricidade a Petróleo ')
+        print('****** Produção ****** \n [1] - Produção de Aço \n [2] - Produção de Cimento \n [3] - Produção de Papel \n [4] - Produção de Vidro \n [5] - Produção de Alumínio \n [6] - Produção de Amônia \n [7] - Produção de Etanol \n [8] - Produção de Eletricidade a Carvão \n [9] - Produção de Eletricidade a Gás Natural \n [10] - Produção de Eletricidade a Petróleo ')
         prod = input('Selecione o que a empresa produz: \n')
         totalProd = []
         while True:
@@ -281,11 +271,10 @@ def empresa():
             else:
                 print('Erro: Selecione uma opção valida. ')
 
-
 #emissão fugitivas
     #arcondicionado
     print('As emissões fugitivas ocorrem quando gases de efeito estufa são liberados diretamente na atmosfera a partir de processos produtivos ou equipamentos, como: ar-condicionado, geladeiras, extintores de incêndio e sistemas de armazenamento de gases industriais.')
-    ar = input('A empresa possui ar condicionado? \n[1] - Sim | [0] - Não')
+    ar = input('A empresa possui ar condicionado? \n [1] - Sim | [0] - Não \n')
     while True:
         if ar == '1':
             qtArP = int(input('Quantos Ar condicionado pequeno? \n'))
@@ -302,9 +291,9 @@ def empresa():
         else:
             print('Erro: Digite um valor valido')
     print('Outros Equipamentos')
-    qtGeladeira = int(input('Número de geladeiras')) #por enquanto meramente ilustrativa
-    qtExtintorABC = int(input('Número de Extintor ABC')) #por enquanto meramente ilustrativa
-    qtExtintorCO2 = int(input('Número de Extintor de CO2')) #por enquanto meramente ilustrativa
+    qtGeladeira = int(input('Número de geladeiras: ')) #por enquanto meramente ilustrativa
+    qtExtintorABC = int(input('Número de Extintor ABC: ')) #por enquanto meramente ilustrativa
+    qtExtintorCO2 = int(input('Número de Extintor de CO2: ')) #por enquanto meramente ilustrativa
 
 #calculo Ar Condicionado
     arP = (((((qtArP * hrArP) * 30) * 12) / 1000) * arCond['arPequeno']) #Resultado ar pequeno em toneladas
