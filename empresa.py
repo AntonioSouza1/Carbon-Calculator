@@ -15,21 +15,21 @@ def empresa():
             break
         else:
             print('Erro: Ano selecionado e invalido. \nO Ano tem que ser de 2006 até 2023')
-    print('****** Ramo da empresa ****** \n [1] - Agro \n [2] - industria \n [3] - Outros')
+    print('****** Ramo da empresa ****** \n [1] - Agro \n [2] - Industria \n [3] - Outros')
     rmEmpresa = input('Selecione o ramo da empresa: ')
     while True:
         if rmEmpresa == '1':
-            print('Ramo selecionado: ')
+            print('Ramo selecionado: Agro')
             break
         elif rmEmpresa == '2':
-            print('Ramo selecionado: ')
+            print('Ramo selecionado: Industria')
             break
         elif rmEmpresa == '3':
-            print('Ramo selecionado: ')
+            print('Ramo selecionado: Outros')
             break
         else:
             print('Erro: Selecione um ramo valido. ')
-#dados
+#dados Fator de conversão
     comb = {
         'etanol': 1.58, #CO2/litro
         'gasolina': 2.24, #CO2/litro
@@ -44,16 +44,16 @@ def empresa():
         'arIndustrial': 4 #kg por hora
     }
     prodIndustrial = {
-        'ProdAco' : 1.8,
-        'ProdCimento' : 0.9,
-        'ProdPapel' : 0.5,
-        'ProdVidro' : 0.6,
-        'ProdAluminio' : 12,
-        'ProdAmonia' : 1.8,
-        'ProdEtanol' : 1.6,
-        'ProdEletricidade_Carvao' : 0.9,
-        'ProdEletricidade_GasNat' : 0.4,
-        'ProdEletricidade_Petróleo' : 0.7
+        'ProdAco' : 1.8, #kg de co2 por kg produzido
+        'ProdCimento' : 0.9, #kg de co2 por kg produzido
+        'ProdPapel' : 0.5, #kg de co2 por kg produzido
+        'ProdVidro' : 0.6, #kg de co2 por kg produzido
+        'ProdAluminio' : 12, #kg de co2 por kg produzido
+        'ProdAmonia' : 1.8, #kg de co2 por kg produzido
+        'ProdEtanol' : 1.6, #kg de co2 por kg produzido
+        'ProdEletricidade_Carvao' : 0.9, #kg de co2 por kg produzido
+        'ProdEletricidade_GasNat' : 0.4, #kg de co2 por kg produzido
+        'ProdEletricidade_Petróleo' : 0.7 #kg de co2 por kg produzido
     }
 #tipos de combustivel
 
@@ -69,7 +69,8 @@ def empresa():
     while True:
         if combEstacionaria == '1':
             while True:
-                slComb = input('Selecione um tipo de combustivel: \n[1] - Etanol \n[2] - Gasolina \n[3] - Diesel \n[4] - BioDiesel \n[5] - glp \n[0] - Sair \n')
+                print(' \n[1] - Etanol \n[2] - Gasolina \n[3] - Diesel \n[4] - BioDiesel \n[5] - glp \n[0] - Sair \n')
+                slComb = input(' \n[1] - Etanol \n[2] - Gasolina \n[3] - Diesel \n[4] - BioDiesel \n[5] - glp \n[0] - Sair \n')
                 if slComb == '1':
                     etanol.append(float(input('Qual e o consumo médio em litros de Etanol por mês? ')))
                     print('Existe mais tipo de combustível para colocar o consumo? \n[1] - Sim | [0] - Não')
