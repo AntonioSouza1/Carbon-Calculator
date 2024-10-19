@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado Empresa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Resultado da Empresa</h2>
+    <p>Empresa: {{ nome_empresa }}</p>
+    <p>Endereço: {{ endereco_empresa }}</p>
+    <p>Nome Responsável: {{ nomeResponsavel_empresa }}</p>
+    <p>Telefone Responsável: {{ telefoneResponsavel_empresa }}</p>
+    <p>Ano Inventariado: {{ ano_inventariado }}</p>
+    <p>Ramo: {{ ramo_empresa }}</p>
+    <h1>Resultado da Emissão de CO2</h1>
+    <h1>Combustível: {{ mensagem }}</h1>
+    <h1>Quantidade: {{ mensagem2 }} litros</h1>
+</body>

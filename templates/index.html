@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <h1>Calculadora de Crédito de Carbono</h1>
+    <label for="finalidade">Finalidade:</label>
+    <select id="finalidade">
+        <option value="">Selecione uma opção</option>
+        <option value="form1">1 - Empresa</option>
+        <option value="form2">2 - Pessoa</option>
+    </select>
+
+    <div id="form1" class="formulario" style="display:none;">
+        <h2>Dados da Empresa</h2>
+        <form action="/Empresa" method="post">
+            <label for="nome_empresa">Empresa:</label>
+            <input type="text" id="nome_empresa" name="nome_empresa" required>
+
+            <label for="endereco_empresa">Endereço:</label>
+            <input type="text" id="endereco_empresa" name="endereco_empresa" required>
+
+            <label for="nomeResponsavel_empresa">Nome Responsável:</label>
+            <input type="text" id="nomeResponsavel_empresa" name="nomeResponsavel_empresa" required>
+
+            <label for="telefoneResponsavel_empresa">Telefone Responsável:</label>
+            <input type="tel" id="telefoneResponsavel_empresa" name="telefoneResponsavel_empresa"
+                placeholder="(11) 11111-1111" 
+                pattern="\(\d{2}\) \d{5}-\d{4}">
+
+            <label for="ano_inventariado">Ano Inventariado: </label>
+            <select name="ano_inventariado" id="ano_inventariado">
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+            </select>
+            <label for="ano_inventariado">Ramo</label>
+            <select name="ramo_empresa" id="ramo_empresa">
+                <option value="1">Agro</option>
+                <option value="2">Industrial</option>
+                <option value="3">outros</option>
+            </select>
+            <div id="formComb">
+                <h2>Entrada de dados</h2>
+                <h3>Combustível</h3>
+                    <label for="gasolina"class="comb">Gasolina:</label>
+                    <input type="number" id="gasolina" name="gasolina"
+                    placeholder="Digite a quantidade de gasolina gasta no mês"
+                    required>
+
+                    <label for="etanol"class="comb">Etanol:</label>
+                    <input type="number" id="etanol" name="etanol"
+                    placeholder="Digite a quantidade de etanol gasta no mês"
+                    required>
+
+                    <label for="diesel" class="comb">Diesel:</label>
+                    <input type="number" id="diesel" name="diesel"
+                    placeholder="Digite a quantidade de Diesel gasta no mês"
+                    required>
+
+                    <label for="biodiesel"class="comb">BioDiesel:</label>
+                    <input type="number" id="biodiesel" name="biodiesel"
+                    placeholder="Digite a quantidade de BioDiesel gasta no mês"
+                    required>
+            </div>
+            <div>
+                <h3>Produção</h3>
+                    <label for="ProdAco"class="comb">Produção de Aco:</label>
+                    <input type="number" id="ProdAco" name="ProdAco"
+                    placeholder="Digite a quantidade de ProdAco gasta no mês"
+                    required>
+
+                    <label for="ProdCimento"class="comb">Produção de Cimento:</label>
+                    <input type="number" id="ProdCimento" name="ProdCimento"
+                    placeholder="Digite a quantidade de ProdCimento gasta no mês"
+                    required>
+
+                    <label for="ProdPapel"class="comb">Produção de Papel:</label>
+                    <input type="number" id="ProdPapel" name="ProdPapel"
+                    placeholder="Digite a quantidade de ProdPapel gasta no mês"
+                    required>
+
+                    <label for="ProdVidro"class="comb">Produção de Vidro:</label>
+                    <input type="number" id="ProdVidro" name="ProdVidro"
+                    placeholder="Digite a quantidade de ProdVidro gasta no mês"
+                    required>
+
+                    <label for="ProdAluminio"class="comb">Produção de Aluminio:</label>
+                    <input type="number" id="ProdAluminio" name="ProdAluminio"
+                    placeholder="Digite a quantidade de ProdAluminio gasta no mês"
+                    required>
+
+                    <label for="ProdAmonia"class="comb">Produção de aluminio:</label>
+                    <input type="number" id="ProdAmonia" name="ProdAmonia"
+                    placeholder="Digite a quantidade de ProdAmonia gasta no mês"
+                    required>
+
+                    <label for="ProdAco"class="comb">Produção de Aco:</label>
+                    <input type="number" id="ProdAco" name="ProdAco"
+                    placeholder="Digite a quantidade de ProdAco gasta no mês"
+                    required>
+
+                    <label for="ProdEtanol"class="comb">Produção de etanol:</label>
+                    <input type="number" id="ProdEtanol" name="ProdEtanol"
+                    placeholder="Digite a quantidade de ProdEtanol gasta no mês"
+                    required>
+
+                    <label for="ProdEletricidade_Carvao"class="comb">Produção de ProdEletricidade_Carvao:</label>
+                    <input type="number" id="ProdEletricidade_Carvao" name="ProdEletricidade_Carvao"
+                    placeholder="Digite a quantidade de ProdEletricidade_Carvao gasta no mês"
+                    required>
+
+                    <label for="ProdEletricidade_GasNat"class="comb">Produção de ProdEletricidade_GasNat:</label>
+                    <input type="number" id="ProdEletricidade_GasNat" name="ProdEletricidade_GasNat"
+                    placeholder="Digite a quantidade de ProdEletricidade_GasNat gasta no mês"
+                    required>
+
+                    <label for="ProdEletricidade_Petroleo"class="comb">Produção de ProdEletricidade_Petróleo:</label>
+                    <input type="number" id="ProdEletricidade_Petroleo" name="ProdEletricidade_Petroleo"
+                    placeholder="Digite a quantidade de ProdEletricidade_Petroleo gasta no mês"
+                    required>
+            </div>
+            <button type="submit">Calcular</button>
+        </form>
+    </div>
+
+    <div id="form2" class="formulario" style="display:none;">
+        <h3>Formulário Pessoal</h3>
+        <form action="/submit2" method="post">
+            <label for="nome_pessoa">Nome:</label>
+            <input type="text" id="nome_pessoa" name="nome_pessoa" required><br><br>
+
+            <label for="email_pessoa">Email:</label>
+            <input type="email" id="email_pessoa" name="email_pessoa" required><br><br>
+
+            <label for="idade_pessoa">Idade:</label>
+            <input type="number" id="idade_pessoa" na>
+    </div>
+    <h1>{{mensagem}}</h1>
+    <h1>{{mensagem2}}</h1>
+    
