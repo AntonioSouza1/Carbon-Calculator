@@ -20,12 +20,7 @@ arCond = {
     'arGrande': 3,  # kg por hora
     'arIndustrial': 4  # kg por hora
 }
-arCond = {
-    'arPequeno': 0.5,  # kg por hora
-    'arMedio': 1.5,  # kg por hora
-    'arGrande': 3,  # kg por hora
-    'arIndustrial': 4  # kg por hora
-}
+
 prodIndustrial = {
     'prodAco': 1.8,  # kg de co2 por kg produzido
     'prodCimento': 0.9,  # kg de co2 por kg produzido
@@ -40,6 +35,7 @@ prodIndustrial = {
 }
 
 totalEmissao = []
+totalCredito = []
 @app.route('/Empresa', methods=['POST'])
 def empresa():
     # cadastro empresa
@@ -52,8 +48,9 @@ def empresa():
     dadosEmpresa['ramoEmpresa'] = int(request.form['ramo_empresa'])
 
     #entrada combustivel via formulário
-    etanol = float(request.form['etanol'])
     gasolina = float(request.form['gasolina'])
+    qtGasolina = int(request.form['qtGasolina'])
+    etanol = float(request.form['etanol'])
     diesel = float(request.form['diesel'])
     biodiesel = float(request.form['biodiesel'])
 

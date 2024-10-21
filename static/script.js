@@ -65,17 +65,25 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleGasolina() {
     const checkGasolina = document.getElementById('checkGasolina');
     const gasolina = document.getElementById('gasolina');
-    const txGasolina = document.getElementById('txGasolina')
+    const txGasolina = document.getElementById('txGasolina');
+    const tx_qtGasolina = document.getElementById('tx_qtGasolina');
+    const qtGasolina = document.getElementById('qtGasolina');
 
     gasolina.classList.remove('mostrar');
     txGasolina.classList.remove('mostrar');
+    tx_qtGasolina.classList.remove('mostrar');
+    qtGasolina.classList.remove('mostrar');
 
     if (checkGasolina.checked) {
         gasolina.style.display = 'block';
         txGasolina.style.display = 'block';
+        tx_qtGasolina.style.display = 'block';
+        qtGasolina.style.display = 'block';
     } else {
         gasolina.style.display = 'none';
         txGasolina.style.display = 'none';
+        tx_qtGasolina.display = 'none';
+        qtGasolina.style.display = 'none';
     }
 }
 //Função oculta campo etanol, aparece quando selecionado
