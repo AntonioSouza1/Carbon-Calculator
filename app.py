@@ -36,70 +36,72 @@ prodIndustrial = {
 
 totalEmissao = []
 totalCredito = []
+
 @app.route('/Empresa', methods=['POST'])
 def empresa():
     # cadastro empresa
     dadosEmpresa = {}
-    dadosEmpresa['nome'] = request.form['nome_empresa'] #entrada do nome da empresa via formulário
-    dadosEmpresa['endereco'] = request.form["endereco_empresa"] #entrada do endereço da empresa via formulário
-    dadosEmpresa['nomeResponsavel'] = request.form['nomeResponsavel_empresa'] #entrada do nome do responsável pela empresa via formulário
-    dadosEmpresa['telefoneResponsavel'] = request.form['telefoneResponsavel_empresa'] #entrada do telefone do responsavel pela empresa via formulário
-    dadosEmpresa['anoInventariado'] = int(request.form['ano_inventariado'])
-    dadosEmpresa['ramoEmpresa'] = int(request.form['ramo_empresa'])
+    dadosEmpresa['nome'] = request.form['nome_empresa'] # Entrada do nome da empresa via formulário
+    dadosEmpresa['endereco'] = request.form["endereco_empresa"] # Entrada do endereço da empresa via formulário
+    dadosEmpresa['nomeResponsavel'] = request.form['nomeResponsavel_empresa'] # Entrada do nome do responsável pela empresa via formulário
+    dadosEmpresa['telefoneResponsavel'] = request.form['telefoneResponsavel_empresa'] # Entrada do telefone do responsavel pela empresa via formulário
+    dadosEmpresa['anoInventariado'] = int(request.form['ano_inventariado']) # Entrada do ano de inventario via seleção no formulário
+    dadosEmpresa['ramoEmpresa'] = int(request.form['ramo_empresa']) # Entrada do ramo da empresa via seleção do formulário
 
     #entrada combustivel via formulário
-    gasolina = float(request.form['gasolina'])
-    qtGasolina = int(request.form['qtGasolina'])
-    etanol = float(request.form['etanol'])
-    diesel = float(request.form['diesel'])
-    biodiesel = float(request.form['biodiesel'])
-
+    gasolina = float(request.form['gasolina']) # Entrada do consumo médio de gasolina por veiculo no mês
+    qtGasolina = int(request.form['qtGasolina']) # Entrada da quantidade de veiculo a gasolina que a empresa possui
+    etanol = float(request.form['etanol']) # Entrada do consumo médio de etanol por veiculo no mês
+    qtEtanol = float(request.form['qtEtanol']) # Entrada da quantidade de veiculo a etanol que a empresa possui
+    diesel = float(request.form['diesel']) # Entrada do consumo médio de diesel por veiculo no mês
+    qtDiesel = float(request.form['qtDiesel']) # Entrada da quantidade de veiculo a disel que a empresa possui
+    biodiesel = float(request.form['biodiesel']) # Entrada do consumo médio de biodiesel por veiculo no mês
+    qtBiodiesel = float(request.form['qtBiodiesel']) # Entrada da quantidade de veiculo a biodiesel que a empresa possui
+    
     #Entrada produção via formulário
-    prodAco = float(request.form['ProdAco'])
-    prodCimento = float(request.form['ProdCimento'])
-    prodPapel = float(request.form['ProdPapel'])
-    prodVidro = float(request.form['ProdVidro'])
-    prodAluminio = float(request.form['ProdAluminio'])
-    prodEtanol = float(request.form['ProdEtanol'])
-    prodAmonia = float(request.form['ProdAmonia'])
-    prodEtanol = float(request.form['ProdEtanol'])
-    prodEletricidade_Carvao = float(request.form['ProdEletricidade_Carvao'])
-    prodEletricidade_GasNat = float(request.form['ProdEletricidade_GasNat'])
-    prodEletricidade_Petroleo = float(request.form['ProdEletricidade_Petroleo'])
+    prodAco = float(request.form['ProdAco']) # Entrada da produção de aço em kg/mês
+    prodCimento = float(request.form['ProdCimento']) # Entrada da produção de aço em kg/mês
+    prodPapel = float(request.form['ProdPapel']) # Entrada da produção de aço em kg/mês
+    prodVidro = float(request.form['ProdVidro']) # Entrada da produção de aço em kg/mês
+    prodAluminio = float(request.form['ProdAluminio']) # Entrada da produção de aço em kg/mês
+    prodEtanol = float(request.form['ProdEtanol']) # Entrada da produção de aço em kg/mês
+    prodAmonia = float(request.form['ProdAmonia']) # Entrada da produção de aço em kg/mês
+    prodEtanol = float(request.form['ProdEtanol']) # Entrada da produção de aço em kg/mês
+    prodEletricidade_Carvao = float(request.form['ProdEletricidade_Carvao']) # Entrada da produção de aço em kg/mês
+    prodEletricidade_GasNat = float(request.form['ProdEletricidade_GasNat']) # Entrada da produção de aço em kg/mês
+    prodEletricidade_Petroleo = float(request.form['ProdEletricidade_Petroleo']) # Entrada da produção de aço em kg/mês
 
     #entrada ar condicionado via terminal
-    arP = float(request.form['arP'])
-    qtarP = int(request.form['qtarP'])
-    arM = float(request.form['arM'])
-    qtarM = int(request.form['qtarM'])
-    arG = float(request.form['arG'])
-    qtarG = int(request.form['qtarG'])
-    arI = float(request.form['arI'])
-    qtarI = int(request.form['qtarI'])
+    arP = float(request.form['arP']) # entrada do uso do ar condicionado em hr/dia
+    qtarP = int(request.form['qtarP']) # quantidade de ar condicionado
+    arM = float(request.form['arM']) # entrada do uso do ar condicionado em hr/dia
+    qtarM = int(request.form['qtarM']) # quantidade de ar condicionado
+    arG = float(request.form['arG']) # entrada do uso do ar condicionado em hr/dia
+    qtarG = int(request.form['qtarG']) # quantidade de ar condicionado
+    arI = float(request.form['arI']) # entrada do uso do ar condicionado em hr/dia
+    qtarI = int(request.form['qtarI']) # quantidade de ar condicionado
 
-    #calculo combustível
-    totalEmissao.append((((12 * etanol) * comb['etanol'])/1000))
-    totalEmissao.append((((12 * gasolina) * comb['gasolina'])/1000))
-    totalEmissao.append((((12 * diesel) * comb['diesel'])/1000))
-    totalEmissao.append((((12 * biodiesel) * comb['biodiesel'])/1000))
+    #Processamento dos dados
+    totalEmissao.append(((((gasolina * qtGasolina) * 12) * comb['gasolina'])/1000)) # calculo de emissão por queima de gasolina em t/ano
+    totalEmissao.append(((((etanol * qtEtanol) * 12) * comb['etanol'])/1000)) # calculo de emissão por queima de etanol em t/ano
+    totalEmissao.append(((((diesel * qtDiesel) * 12) * comb['diesel'])/1000)) # calculo de emissão por queima de diesel em t/ano
+    totalEmissao.append(((((biodiesel * qtBiodiesel) * 12) * comb['biodiesel'])/1000)) # calculo de emissão por queima de biodiesel em t/ano
 
-    #calculo produção
-    totalEmissao.append(((((prodAco * 30)*12) * prodIndustrial['prodAco'])/1000))
-    totalEmissao.append(((((prodCimento * 30)*12) * prodIndustrial['prodCimento'])/1000))
-    totalEmissao.append(((((prodPapel * 30)*12) * prodIndustrial['prodPapel'])/1000))
-    totalEmissao.append(((((prodVidro * 30)*12) * prodIndustrial['prodVidro'])/1000))
-    totalEmissao.append(((((prodAluminio * 30)*12) * prodIndustrial['prodAluminio'])/1000))
-    totalEmissao.append(((((prodAmonia * 30)*12) * prodIndustrial['prodAmonia'])/1000))
-    totalEmissao.append(((((prodEtanol * 30)*12) * prodIndustrial['prodEtanol'])/1000))
-    totalEmissao.append(((((prodEletricidade_Carvao * 30)*12) * prodIndustrial['prodEletricidade_Carvao'])/1000))
-    totalEmissao.append(((((prodEletricidade_GasNat * 30)*12) * prodIndustrial['prodEletricidade_GasNat'])/1000))
-    totalEmissao.append(((((prodEletricidade_Petroleo * 30)*12) * prodIndustrial['prodEletricidade_Petroleo'])/1000))
+    totalEmissao.append(((((prodAco * 30)*12) * prodIndustrial['prodAco'])/1000)) # Calculo de produção de aço em t/ano
+    totalEmissao.append(((((prodCimento * 30)*12) * prodIndustrial['prodCimento'])/1000)) # Calculo de produção de cimento em t/ano
+    totalEmissao.append(((((prodPapel * 30)*12) * prodIndustrial['prodPapel'])/1000)) # Calculo de produção de papel em t/ano
+    totalEmissao.append(((((prodVidro * 30)*12) * prodIndustrial['prodVidro'])/1000)) # Calculo de produção de vidro em t/ano
+    totalEmissao.append(((((prodAluminio * 30)*12) * prodIndustrial['prodAluminio'])/1000)) # Calculo de produção de alumínio em t/ano
+    totalEmissao.append(((((prodAmonia * 30)*12) * prodIndustrial['prodAmonia'])/1000)) # Calculo de produção de amônia em t/ano
+    totalEmissao.append(((((prodEtanol * 30)*12) * prodIndustrial['prodEtanol'])/1000)) # Calculo de produção de etanol em t/ano
+    totalEmissao.append(((((prodEletricidade_Carvao * 30)*12) * prodIndustrial['prodEletricidade_Carvao'])/1000)) # Calculo de produção de eletricidade por queima de carvão em t/ano
+    totalEmissao.append(((((prodEletricidade_GasNat * 30)*12) * prodIndustrial['prodEletricidade_GasNat'])/1000)) # Calculo de produção de eletricidade por queima de gás natural em t/ano
+    totalEmissao.append(((((prodEletricidade_Petroleo * 30)*12) * prodIndustrial['prodEletricidade_Petroleo'])/1000)) # Calculo de produção de eletricidade por queima de petrólio em t/ano
 
-    #calculo Ar condicionado
-    totalEmissao.append((((((qtarP * arP) * 30) * 12) * arCond['arPequeno']) / 1000)) #Resultado ar pequeno em toneladas
-    totalEmissao.append((((((qtarM * arM) * 30) * 12) * arCond['arMedio']) / 1000)) # Resultado ar pequeno em toneladas
-    totalEmissao.append((((((qtarG * arG) * 30) * 12) * arCond['arGrande']) / 1000)) # Resultado ar pequeno em toneladas
-    totalEmissao.append((((((qtarI * arI) * 30) * 12) * arCond['arIndustrial']) / 1000)) # Resultado ar pequeno em toneladas
+    totalEmissao.append((((((qtarP * arP) * 30) * 12) * arCond['arPequeno']) / 1000)) # Calculo de emissão para ar cond.pequeno em t/ano
+    totalEmissao.append((((((qtarM * arM) * 30) * 12) * arCond['arMedio']) / 1000)) # Calculo de emissão para ar cond.pequeno em t/ano
+    totalEmissao.append((((((qtarG * arG) * 30) * 12) * arCond['arGrande']) / 1000)) # Calculo de emissão para ar cond.grande em t/ano
+    totalEmissao.append((((((qtarI * arI) * 30) * 12) * arCond['arIndustrial']) / 1000)) # Calculo de emissão para ar cond.industrial em t/ano
 
     #retorno
     mensagem2 = (f'{sum(totalEmissao):.2f}')
