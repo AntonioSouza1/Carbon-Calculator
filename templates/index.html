@@ -11,7 +11,7 @@
     <div class="clock" id="clock"></div>
     <h1>Calculadora de Crédito de Carbono</h1>
     <select id="finalidade">
-        <option value="">Selecione uma finalidade</option>
+        <option value="">Selecione a finalidade</option>
         <option value="form1">1 - Empresa</option>
         <option value="form2">2 - Pessoa</option>
     </select>
@@ -51,42 +51,56 @@
             <div id="formComb">
                 <h2>Entrada de dados</h2>
                 <h3>Combustível</h3>
-                <label>
-                    <input type="checkbox" id="checkGasolina" onclick="toggleGasolina()">Uso de gasolina
-                    <input type="checkbox" id="checkEtanol" onclick="toggleEtanol()">Uso de Etanol
-                    <input type="checkbox" id="checkDiesel" onclick="toggleDiesel()">Uso de Diesel
-                    <input type="checkbox" id="checkBiodiesel" onclick="toggleBiodiesel()">Uso de BioDiesel
-                </label>
-                    <label for="gasolina" id="txGasolina" class="comb">Gasolina:</label>
+                    <label>
+                        <label type="text" id="ckeckComb" class="comb">Selecione os tipos de combustíveis usado pela sua empresa</label>
+                        <input type="checkbox" id="checkGasolina" onclick="toggleGasolina()">Gasolina
+                        <input type="checkbox" id="checkEtanol" onclick="toggleEtanol()">Etanol
+                        <input type="checkbox" id="checkDiesel" onclick="toggleDiesel()">Diesel
+                        <input type="checkbox" id="checkBiodiesel" onclick="toggleBiodiesel()">BioDiesel
+                    </label>
+                    <label for="gasolina" id="txGasolina" class="comb">Consumo de Gasolina(L)</label>
                     <input type="number" id="gasolina" name="gasolina" value="0"
-                    placeholder="Digite a quantidade de gasolina gasta no mês">
-                    <label for="tx_qtGasolina" id="tx_qtGasolina" class="comb">Quantidade de veículos a Gasolina:</label>
+                    placeholder="Informe a média mensal de gasolina usada por veiculo">
+                    <label for="tx_qtGasolina" id="tx_qtGasolina" class="comb">Quantidade de veículos</label>
                     <input type="number" id="qtGasolina" nome="qtGasolina" value="1"
-                    placeholder="Informe a quantidade de veiculos a gasolina" >
+                    placeholder="Informe a quantidade de veiculos movido a gasolina" >
 
-                    <label for="etanol" id="txEtanol" class="comb">Etanol:</label>
+                    <label for="etanol" id="txEtanol" class="comb">Consumo de Etanol(L):</label>
                     <input type="number" id="etanol" name="etanol" value="0"
                     placeholder="Digite a quantidade de etanol gasta no mês">
-                    <label for="tx_qtEtanol" id="tx_qtEtanol" class="comb">Quantidade de veículos a Etanol</label>
+                    <label for="tx_qtEtanol" id="tx_qtEtanol" class="comb">Quantidade de veículos</label>
                     <input type="number" id="qtEtanol" name="qtEtanol" value="1"
-                    placeholder="Informe a quantidade de veiculos a Etanol">
+                    placeholder="Informe a quantidade de veiculos movido a Etanol">
 
-                    <label for="diesel" id="txDiesel" class="comb">Diesel:</label>
+                    <label for="diesel" id="txDiesel" class="comb">consumo de Diesel(L):</label>
                     <input type="number" id="diesel" name="diesel" value="0"
                     placeholder="Digite a quantidade de Diesel gasta no mês">
-                    <label for="tx_qtDiesel" id="tx_qtDiesel" class="comb">Quantidade de veículos a Diesel</label>
+                    <label for="tx_qtDiesel" id="tx_qtDiesel" class="comb">Quantidade de veículos</label>
                     <input type="number" id="qtDiesel" name="qtDiesel" value="1"
-                    placeholder="Informe a quantidade de veiculos a Diesel">
+                    placeholder="Informe a quantidade de veiculos movido a Diesel">
 
-                    <label for="biodiesel" id="txBiodiesel" class="comb">BioDiesel:</label>
+                    <label for="biodiesel" id="txBiodiesel" class="comb">Consumo de BioDiesel(L):</label>
                     <input type="number" id="biodiesel" name="biodiesel" value="0"
                     placeholder="Digite a quantidade de BioDiesel gasta no mês">
-                    <label for="tx_qtbioiesel" id="tx_qtbioiesel" class="comb">Quantidade de veículos a Diesel</label>
+                    <label for="tx_qtbioiesel" id="tx_qtbioiesel" class="comb">Quantidade de veículos</label>
                     <input type="number" id="qtBiodiesel" name="qtBiodiesel" value="1"
-                    placeholder="Informe a quantidade de veiculos a Biodiesel">
+                    placeholder="Informe a quantidade de veiculos movido a Biodiesel">
             </div>
             <div id="producao" class='formProducao' style="display:none;">
                 <h3>Produção</h3>
+                    <label>
+                        <label type="text" id="ckeckComb" class="comb">Selecione os tipos de combustíveis usado pela sua empresa</label>
+                        <input type="checkbox" id="checkAco" onclick="toggleGasolina()">Aço
+                        <input type="checkbox" id="checkCimento" onclick="toggleEtanol()">Cimento
+                        <input type="checkbox" id="checkPapel" onclick="toggleDiesel()">Papel
+                        <input type="checkbox" id="checkVidro" onclick="toggleBiodiesel()">Vidro
+                        <input type="checkbox" id="checkAluminio" onclick="toggleBiodiesel()">Aluminio
+                        <input type="checkbox" id="checkPEtanol" onclick="toggleBiodiesel()">Etanol
+                        <input type="checkbox" id="checkAmonia" onclick="toggleBiodiesel()">Amonia
+                        <input type="checkbox" id="checkEleCarvao" onclick="toggleBiodiesel()">Eletricidade por carvão
+                        <input type="checkbox" id="checkEleGas" onclick="toggleBiodiesel()">Eletricidade por Gás Natural
+                        <input type="checkbox" id="checkElePetroleo" onclick="toggleBiodiesel()">Eletricidade por Petróleo
+                    </label>
                     <label for="ProdAco">Produção de Aco:</label>
                     <input type="number" id="ProdAco" name="ProdAco" value="0"
                     placeholder="Digite a quantidade de ProdAco gasta no mês">
