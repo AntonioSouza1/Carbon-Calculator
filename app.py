@@ -45,14 +45,22 @@ totalCredito = []
 
 @app.route('/calculo', methods=['POST'])
 def empresa():
-    # cadastro empresa
-    dadosEmpresa = {}
-    dadosEmpresa['nome'] = request.form['nome_empresa'] # Entrada do nome da empresa via formulário
-    dadosEmpresa['endereco'] = request.form["endereco_empresa"] # Entrada do endereço da empresa via formulário
-    dadosEmpresa['nomeResponsavel'] = request.form['nomeResponsavel_empresa'] # Entrada do nome do responsável pela empresa via formulário
-    dadosEmpresa['telefoneResponsavel'] = request.form['telefoneResponsavel_empresa'] # Entrada do telefone do responsavel pela empresa via formulário
-    dadosEmpresa['anoInventariado'] = int(request.form['ano_inventariado']) # Entrada do ano de inventario via seleção no formulário
-    dadosEmpresa['ramoEmpresa'] = int(request.form['ramo_empresa']) # Entrada do ramo da empresa via seleção do formulário
+    tipo = request.form['tipo']
+    if tipo == 1:
+        dadosPessoais = {}
+        dadosPessoais['nome'] = request.form['nome']
+        dadosPessoais['idade'] = request.form['idade']
+        dadosPessoais['email'] = request.form['email']
+        dadosPessoais['telefone'] = request.form['telefone']
+    elif tipo == 2:
+        # cadastro empresa
+        dadosEmpresa = {}
+        dadosEmpresa['nome'] = request.form['nome_empresa'] # Entrada do nome da empresa via formulário
+        dadosEmpresa['endereco'] = request.form["endereco_empresa"] # Entrada do endereço da empresa via formulário
+        dadosEmpresa['nomeResponsavel'] = request.form['nomeResponsavel_empresa'] # Entrada do nome do responsável pela empresa via formulário
+        dadosEmpresa['telefoneResponsavel'] = request.form['telefoneResponsavel_empresa'] # Entrada do telefone do responsavel pela empresa via formulário
+        dadosEmpresa['anoInventariado'] = int(request.form['ano_inventariado']) # Entrada do ano de inventario via seleção no formulário
+        dadosEmpresa['ramoEmpresa'] = int(request.form['ramo_empresa']) # Entrada do ramo da empresa via seleção do formulário
 
     #entrada combustivel via formulário
     gasolina = float(request.form['gasolina']) # Entrada do consumo médio de gasolina por veiculo no mês
@@ -110,8 +118,15 @@ def empresa():
     totalEmissao.append((((((qtarI * arI) * 30) * 12) * arCond['arIndustrial']) / 1000)) # Calculo de emissão para ar cond.industrial em t/ano
 
     #retorno
-    mensagem2 = (f'{sum(totalEmissao):.2f}')
-    return render_template('company_results.html',
+    if tipo == 1:
+        mensagem2 = (f'{sum(totalEmissao):.2f}')
+        return render_template('company_results.html',
+                           nome=dadosPessoais['nome'],
+                            mensagem=mensagem2,)
+
+    elif tipo == 2:
+        mensagem2 = (f'{sum(totalEmissao):.2f}')
+        return render_template('company_results.html',
                            nome_empresa=dadosEmpresa['nome'],
                            endereco_empresa=dadosEmpresa['endereco'],
                            nomeResponsavel_empresa=dadosEmpresa['nomeResponsavel'],

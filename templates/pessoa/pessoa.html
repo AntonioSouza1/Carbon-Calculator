@@ -10,18 +10,21 @@
     <title>Caculo Empresa</title>
 </head>
 <body>
+    <div>
+        <input type="hidden" id="tipo" name="tipo" value="1">
+    </div>
     <h1>Calculadora de Crédito de Carbono</h1>
     <div id="form1" class="formulario">
         <h2>Dados da Empresa</h2>
         <form action="/Empresa" method="post">
-            <label for="nome_empresa">Empresa:</label>
-            <input type="text" id="nome_empresa" name="nome_empresa" required>
+            <label for="nome">Empresa:</label>
+            <input type="text" id="nome" name="nome" required>
 
-            <label for="endereco_empresa">Endereço:</label>
-            <input type="text" id="endereco_empresa" name="endereco_empresa" required>
+            <label for="idade">Endereço:</label>
+            <input type="text" id="idade" name="idade" required>
 
-            <label for="nomeResponsavel_empresa">Nome Responsável:</label>
-            <input type="text" id="nomeResponsavel_empresa" name="nomeResponsavel_empresa" required>
+            <label for="email">Nome Responsável:</label>
+            <input type="text" id="email" name="email" required>
 
             <label for="telefoneResponsavel_empresa">Telefone Responsável:</label>
             <input type="tel" id="telefoneResponsavel_empresa" name="telefoneResponsavel_empresa"
