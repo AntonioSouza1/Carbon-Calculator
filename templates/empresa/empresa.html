@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='empresa/style_empresa.css') }}">
+    <script src="{{ url_for('static', filename='empresa/script_empresa.js') }}" defer></script>
+    <title>Caculo Empresa</title>
+</head>
+<body>
+    <h1>Calculadora de Crédito de Carbono</h1>
+    <div id="form1" class="formulario">
+        <h2>Dados da Empresa</h2>
+        <form action="/calculo" method="post">
+            <label for="nome_empresa">Empresa:</label>
+            <input type="text" id="nome_empresa" name="nome_empresa" required>
+
+            <label for="endereco_empresa">Endereço:</label>
+            <input type="text" id="endereco_empresa" name="endereco_empresa" required>
+
+            <label for="nomeResponsavel_empresa">Nome Responsável:</label>
+            <input type="text" id="nomeResponsavel_empresa" name="nomeResponsavel_empresa" required>
+
+            <label for="telefoneResponsavel_empresa">Telefone Responsável:</label>
+            <input type="tel" id="telefoneResponsavel_empresa" name="telefoneResponsavel_empresa"
+                placeholder="(11) 11111-1111"
+                pattern="\(\d{2}\) \d{5}-\d{4}">
+
+            <label for="ano_inventariado">Ano Inventariado: </label>
+            <select name="ano_inventariado" id="ano_inventariado">
+                <option value="0000">selecione um ano</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+            </select>
+            <label for="ano_inventariado">Ramo</label>
+            <select name="ramo_empresa" id="ramo_empresa">
+                <option value="0">Selecione um ramo</option>
+                <option value="1">Agro</option>
+                <option value="2">Industrial</option>
+                <option value="3">outros</option>
+            </select>
+            <div id="formComb">
+                <h2>Entrada de dados</h2>
+                <h3>Combustível</h3>
+                    <label>
+                        <label type="text" id="ckeckComb" class="comb">Selecione os tipos de combustíveis usado pela sua empresa</label>
+                        <input type="checkbox" id="checkGasolina" onclick="toggleGasolina()">Gasolina
+                        <input type="checkbox" id="checkEtanol" onclick="toggleEtanol()">Etanol
+                        <input type="checkbox" id="checkDiesel" onclick="toggleDiesel()">Diesel
+                        <input type="checkbox" id="checkBiodiesel" onclick="toggleBiodiesel()">BioDiesel
+                    </label>
+                    <label for="gasolina" id="txGasolina" class="comb">Consumo de Gasolina(L)</label>
+                    <input type="number" id="gasolina" name="gasolina" value="0"
+                    placeholder="Informe a média mensal de gasolina usada por veiculo">
+                    <label for="tx_qtGasolina" id="tx_qtGasolina" class="comb">Quantidade de veículos</label>
+                    <input type="number" id="qtGasolina" name="qtGasolina" value="1"
+                    placeholder="Informe a quantidade de veiculos movido a gasolina" >
+
+                    <label for="etanol" id="txEtanol" class="comb">Consumo de Etanol(L):</label>
+                    <input type="number" id="etanol" name="etanol" value="0"
+                    placeholder="Digite a quantidade de etanol gasta no mês">
+                    <label for="tx_qtEtanol" id="tx_qtEtanol" class="comb">Quantidade de veículos</label>
+                    <input type="number" id="qtEtanol" name="qtEtanol" value="1"
+                    placeholder="Informe a quantidade de veiculos movido a Etanol">
+
+                    <label for="diesel" id="txDiesel" class="comb">consumo de Diesel(L):</label>
+                    <input type="number" id="diesel" name="diesel" value="0"
+                    placeholder="Digite a quantidade de Diesel gasta no mês">
+                    <label for="tx_qtDiesel" id="tx_qtDiesel" class="comb">Quantidade de veículos</label>
+                    <input type="number" id="qtDiesel" name="qtDiesel" value="1"
+                    placeholder="Informe a quantidade de veiculos movido a Diesel">
+
+                    <label for="biodiesel" id="txBiodiesel" class="comb">Consumo de BioDiesel(L):</label>
+                    <input type="number" id="biodiesel" name="biodiesel" value="0"
+                    placeholder="Digite a quantidade de BioDiesel gasta no mês">
+                    <label for="tx_qtBioiesel" id="tx_qtBiodiesel" class="comb">Quantidade de veículos</label>
+                    <input type="number" id="qtBiodiesel" name="qtBiodiesel" value="1"
+                    placeholder="Informe a quantidade de veiculos movido a Biodiesel">
+            </div>
+            <div id="producao" class='formProducao' style="display:none;">
+                <h3>Produção</h3>
+                    <label>
+                        <label type="text" id="ckeckComb" class="comb">Selecione os tipos de combustíveis usado pela sua empresa</label>
+                        <input type="checkbox" id="checkAco" onclick="toggleGasolina()">Aço
+                        <input type="checkbox" id="checkCimento" onclick="toggleEtanol()">Cimento
+                        <input type="checkbox" id="checkPapel" onclick="toggleDiesel()">Papel
+                        <input type="checkbox" id="checkVidro" onclick="toggleBiodiesel()">Vidro
+                        <input type="checkbox" id="checkAluminio" onclick="toggleBiodiesel()">Aluminio
+                        <input type="checkbox" id="checkPEtanol" onclick="toggleBiodiesel()">Etanol
+                        <input type="checkbox" id="checkAmonia" onclick="toggleBiodiesel()">Amonia
+                        <input type="checkbox" id="checkEleCarvao" onclick="toggleBiodiesel()">Eletricidade por carvão
+                        <input type="checkbox" id="checkEleGas" onclick="toggleBiodiesel()">Eletricidade por Gás Natural
+                        <input type="checkbox" id="checkElePetroleo" onclick="toggleBiodiesel()">Eletricidade por Petróleo
+                    </label>
+                    <label for="ProdAco">Produção de Aco:</label>
+                    <input type="number" id="ProdAco" name="ProdAco" value="0"
+                    placeholder="Digite a quantidade de ProdAco gasta no mês">
+
+                    <label for="ProdCimento">Produção de Cimento:</label>
+                    <input type="number" id="ProdCimento" name="ProdCimento" value="0"
+                    placeholder="Digite a quantidade de ProdCimento gasta no mês">
+
+                    <label for="ProdPapel">Produção de Papel:</label>
+                    <input type="number" id="ProdPapel" name="ProdPapel" value="0"
+                    placeholder="Digite a quantidade de ProdPapel gasta no mês">
+
+                    <label for="ProdVidro">Produção de Vidro:</label>
+                    <input type="number" id="ProdVidro" name="ProdVidro" value="0"
+                    placeholder="Digite a quantidade de ProdVidro gasta no mês">
+
+                    <label for="ProdAluminio">Produção de Aluminio:</label>
+                    <input type="number" id="ProdAluminio" name="ProdAluminio" value="0"
+                    placeholder="Digite a quantidade de Aluminio gasta no mês">
+
+                    <label for="ProdEtanol">Produção de etanol:</label>
+                    <input type="number" id="ProdEtanol" name="ProdEtanol" value="0"
+                    placeholder="Digite a quantidade de ProdEtanol gasta no mês">
+
+                    <label for="ProdAmonia">Produção de Eletricidade por Carvão:</label>
+                    <input type="number" id="ProdAmonia" name="ProdAmonia" value="0"
+                    placeholder="Digite a quantidade de ProdAmonia gasta no mês">
+
+                    <label for="ProdEletricidade_Carvao">Produção de Eletricidade por Carvão:</label>
+                    <input type="number" id="ProdEletricidade_Carvao" name="ProdEletricidade_Carvao" value="0"
+                    placeholder="Digite a quantidade de Eletricidade por Carvão gasta no mês">
+
+                    <label for="ProdEletricidade_GasNat">Produção de Eletricidade Gás Natural:</label>
+                    <input type="number" id="ProdEletricidade_GasNat" name="ProdEletricidade_GasNat" value="0"
+                    placeholder="Digite a quantidade de Eletricidade Gás Natural gasta no mês">
+
+                    <label for="ProdEletricidade_Petroleo">Produção de Eletricidade por Petróleo:</label>
+                    <input type="number" id="ProdEletricidade_Petroleo" name="ProdEletricidade_Petroleo" value="0"
+                    placeholder="Digite a quantidade de Eletricidade por Petróleo gasta no mês">
+            </div>
+            <div id="agro" class='formAgro' style="display:none;">
+                <h3>Agro</h3>
+                    <label for="soloOrg">Cultivo em solos Orgânicos</label>
+                    <input type="number" id="soloOrg" name="soloOrg" value="0"
+                        placeholder="Digite a quantidade de cultivo">
+
+                    <label for="soloMineral">Cultivo em solo mineral</label>
+                    <input type="number" id="soloMineral" name="soloMineral" value="0"
+                        placeholder="Digite a quantidade de cultivo">
+
+                    <label for="desmatamento">desmatamento e conversão de terras</label>
+                    <input type="number" id="desmatamento" name="desmatamento" value="0"
+                        placeholder="Digite a quantidade de cultivo">
+            </div>
+            <div id="ar" class='arCondicionado'>
+                <h3>Emissão por uso de ar condicionado</h3>
+                    <label for="arP">Ar condicionado pequeno</label>
+                    <input type="number" id="arP" name="arP" value="0"
+                       placeholder="Digite a quantidade de horas de uso por dia">
+                    <input type="number" id="qtarP" name="qtarP" value="0"
+                       placeholder="Digite a quantidade de ar condicionado pequeno">
+
+                    <label for="arM" class='arCondicionado'>Ar condicionado medio</label>
+                    <input type="number" id="arM" name="arM" value="0"
+                       placeholder="Digite a quantidade de horas de uso por dia">
+                    <input type="number" id="qtarM" name="qtarM" value="0"
+                       placeholder="Digite a quantidade de ar condicionado médio">
+
+                    <label for="arG" class='arCondicionado'>Ar condicionado grande</label>
+                    <input type="number" id="arG" name="arG" value="0"
+                       placeholder="Digite a quantidade de horas de uso por dia">
+                    <input type="number" id="qtarg" name="qtarG" value="0"
+                       placeholder="Digite a quantidade de ar condicionado grande">
+
+                    <label for="arI" class='arCondicionado'>Ar condicionado industrial</label>
+                    <input type="number" id="arI" name="arI" value="0"
+                       placeholder="Digite a quantidade de horas de uso por dia">
+                    <input type="number" id="qtarI" name="qtarI" value="0"
+                       placeholder="Digite a quantidade de ar condicionado industrial">
+            </div>
+            <button type="submit">Calcular</button>
+        </form>
+    </div>
+</body>
+</html>

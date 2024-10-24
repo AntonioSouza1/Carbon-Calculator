@@ -5,6 +5,12 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+@app.route('/empresa')
+def empresa_index():
+    return render_template('empresa/empresa.html')
+@app.route('/pessoa')
+def pessoa_index():
+    return render_template('pessoa/pessoa.html')
 
 # Base de dados "Fator de conversão"
 comb = {
@@ -37,7 +43,7 @@ prodIndustrial = {
 totalEmissao = []
 totalCredito = []
 
-@app.route('/Empresa', methods=['POST'])
+@app.route('/calculo', methods=['POST'])
 def empresa():
     # cadastro empresa
     dadosEmpresa = {}
@@ -113,14 +119,6 @@ def empresa():
                            ano_inventariado=dadosEmpresa['anoInventariado'],
                            ramo_empresa=dadosEmpresa['ramoEmpresa'],
                            mensagem2=mensagem2)
-
-
-@app.route('/submit2', methods=['POST'])
-def submit2():
-    nome_pessoa = request.form['nome_pessoa']
-    email_pessoa = request.form['email_pessoa']
-    idade_pessoa = request.form['idade_pessoa']
-    return f'Nome: {nome_pessoa}, Email: {email_pessoa}, Idade: {idade_pessoa}'
 
 if __name__ == '__main__':
     app.run(debug=True)
